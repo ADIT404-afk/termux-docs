@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>                                                                                                      <meta charset="UTF-8" />
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proot - Termux Docs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">                                                                                   <style>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,10 +18,12 @@
       --muted: #555570;
       --border: #1e1e2e;
     }
-                                                                                                              body {
+
+    body {
       font-family: 'Syne', sans-serif;
       background-color: var(--bg);
-      color: var(--text);                                                                                       min-height: 100vh;
+      color: var(--text);
+      min-height: 100vh;
     }
 
     .wrapper {
@@ -70,10 +74,13 @@
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 1px;
-      text-transform: uppercase;                                                                                transition: color 0.2s;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
 
-    nav .Links a:hover,                                                                                       nav .Links a.active { color: var(--cyan); }                                                           
+    nav .Links a:hover,
+    nav .Links a.active { color: var(--cyan); }
+
     .hero {
       margin-bottom: 60px;
     }
@@ -108,10 +115,13 @@
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;                                                                                                margin-top: 20px;
+      gap: 16px;
+      margin-top: 20px;
       margin-bottom: 60px;
     }
-                                                                                                              .card {                                                                                                     background: var(--surface);
+
+    .card {
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 22px;
@@ -124,10 +134,12 @@
     .card:hover {
       border-color: var(--cyan);
       transform: translateY(-3px);
-    }                                                                                                     
+    }
+
     .card-icon {
       font-size: 1.5rem;
-      margin-bottom: 12px;                                                                                    }
+      margin-bottom: 12px;
+    }
 
     .card h3 {
       font-size: 1rem;
@@ -153,10 +165,13 @@
       border-top: 1px solid var(--border);
     }
 
-    .dot {                                                                                                      width: 8px;
+    .dot {
+      width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--lime);                                                                                  box-shadow: 0 0 8px var(--lime);                                                                          animation: pulse 2s ease-in-out infinite;
+      background: var(--lime);
+      box-shadow: 0 0 8px var(--lime);
+      animation: pulse 2s ease-in-out infinite;
     }
 
     @keyframes pulse {
@@ -195,17 +210,21 @@
     }
 
     .step-content h3 {
-      font-size: 1rem;                                                                                          font-weight: 700;
+      font-size: 1rem;
+      font-weight: 700;
       margin-bottom: 8px;
       color: var(--text);
-    }                                                                                                                                                                                                                   .step-content p {
+    }
+
+    .step-content p {
       font-size: 0.85rem;
       color: #777;
       line-height: 1.6;
       margin-bottom: 12px;
     }
 
-    .code-block {                                                                                               font-family: 'Share Tech Mono', monospace;
+    .code-block {
+      font-family: 'Share Tech Mono', monospace;
       font-size: 0.8rem;
       background: #0a0a0f;
       border: 1px solid var(--border);
