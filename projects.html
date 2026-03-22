@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>                                                                                                      <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Termux Docs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">                                                                                   <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --cyan: #00ffe7;
+      --lime: #aaff00;
+      --text: #e0e0e0;
+      --muted: #555570;
+      --border: #1e1e2e;
+    }
+                                                                                                              body {
+      font-family: 'Syne', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);                                                                                       min-height: 100vh;
+    }
+
+    .wrapper {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 30px 24px;
+    }
+
+    .page-header {
+      margin-bottom: 50px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .page-header h1 span {
+      color: var(--cyan);
+    }
+
+    nav {
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    nav .logo {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav .Links a {
+      margin-left: 20px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;                                                                                transition: color 0.2s;
+    }
+
+    nav .Links a:hover,                                                                                       nav .Links a.active { color: var(--cyan); }                                                           
+    .hero {
+      margin-bottom: 60px;
+    }
+
+    .label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .desc {
+      color: #888;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;                                                                                                margin-top: 20px;
+      margin-bottom: 60px;
+    }
+                                                                                                              .card {                                                                                                     background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+      display: block;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+    }                                                                                                     
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 12px;                                                                                    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--cyan);
+    }
+
+    .card p {
+      font-size: 0.83rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .dot {                                                                                                      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);                                                                                  box-shadow: 0 0 8px var(--lime);                                                                          animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {opacity: 1; }
+      50% {opacity: 0.3; }
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+
+    .step:hover {
+      border-color: var(--cyan);
+    }
+
+    .step-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cyan);
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      font-size: 1rem;                                                                                          font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }                                                                                                                                                                                                                   .step-content p {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .code-block {                                                                                               font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      background: #0a0a0f;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      padding: 10px 14px;
+      border-radius: 4px;
+      color: var(--lime);
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      padding: 8px 16px;
+      border: 1px solid var(--cyan);
+      border-radius: 4px;
+      color: var(--cyan);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    .cmd-section {
+       margin-bottom: 40px;
+    }
+
+    .cmd-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      transition: border-color 0.2s;
+    }
+
+    .cmd-item:hover {
+      border-color: var(--cyan);
+    }
+
+    .cmd-item .code-block {
+      min-width: 200px;
+      flex-shrink: 0;
+      margin: 0;
+    }
+
+    .cmd-item p {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <a href="index.html" class="logo">termux.DOCS</a>
+      <div class="Links">
+        <a href="index.html">Home</a>
+        <a href="setup.html">Setup</a>
+        <a href="commands.html">Commands</a>
+        <a href="proot.html">Proot</a>
+        <a href="projects.html" class="active">Projects</a>
+      </div>
+    </nav>
+    <div class="page-header">
+      <p class="label">// My Projects</p>
+      <h1>Linux <span>Projects</span></h1>
+      <p class="desc">Projects yang pernah gw kerjain pake termux di Android.</p>
+    </div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Web Server Lokal</h3>
+          <p>Bikin web server lokal di HP pake Python HTTP Server. File HTML bisa diakses dari browser tanpa internet.</p>
+          <div class="code-block">python -m http.server 8080</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Setup Debian di Termux</h3>
+          <p>Install dan konfigurasi Debian Linux di HP pake proot-distro. Bisa jalanin package Linux beneran di Android.</p>
+          <div class="code-block">proot-distro install debian</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Git & GitHub dari HP</h3>
+          <p>Push dan pull repo GitHub langsung dari Termux tanpa laptop. Semua workflow git bisa dilakuin dari HP.</p>
+          <div class="code-block">git push -u origin main</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Belajar JavaScript di Node.js</h3>
+          <p>Jalanin dan belajar JavaScript langsung di terminal Termux pake Node.js tanpa browser.</p>
+          <div class="code-block">node latihan.js</div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="status-bar">
+      <div class="dot"></div>
+      <span>Termux — Android Hacking Since Day One 🔥</span>
+    </div>
+  </div>
+</body>
+</html>
