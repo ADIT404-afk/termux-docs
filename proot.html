@@ -288,6 +288,57 @@
       color: #777;
     }
 
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.aktif {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #111118;
+      border: 1px solid #00ffe7;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 260px;
+      width: 70%;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-box img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .modal-box p {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: #00ffe7;
+      letter-spacing: 1px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      cursor: pointer;
+      color: #555570;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #00ffe7;
+    }
+
   </style>
 </head>
 <body>
@@ -305,11 +356,11 @@
     <div class="page-header">
       <p class="label">// Reference</p>
       <h1>Linux <span>Proot</span></h1>
-      <p class="desc">Cara install dan jalanin distro Linux dihp pake proot-distro.</p>
+      <p class="desc">Cara install dan jalanin distro Linux di hp pake proot-distro.</p>
     </div>
     <div class="steps">
 
-      <div class="step">
+      <div class="step" onclick="bukaModalInstallProot()" style="cursor: pointer;">
         <div class="step-num">01</div>
         <div class="step-content">
           <h3>Install Proot-Distro</h3>
@@ -318,7 +369,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalInstallDistro()" style="cursor: pointer;">
         <div class="step-num">02</div>
         <div class="step-content">
           <h3>Install Distro Linux</h3>
@@ -327,7 +378,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalLoginDistro()" style="cursor: pointer;">
         <div class="step-num">03</div>
         <div class="step-content">
           <h3>Login ke Distro</h3>
@@ -336,7 +387,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalUpdateDistro()" style="cursor: pointer;">
         <div class="step-num">04</div>
         <div class="step-content">
           <h3>Update Distro</h3>
@@ -345,7 +396,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalKeluarDistro()" style="cursor: pointer;">
         <div class="step-num">05</div>
         <div class="step-content">
           <h3>Keluar dari Distro</h3>
@@ -360,5 +411,97 @@
       <span>Termux — Android Hacking Since Day One 🔥</span>
     </div>
   </div>
+  <div class="modal" id="modalInstallProot">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalInstallProot()">❌</span>
+      <img src="img/install_proot.jpg" alt="Foto Install Proot" />
+    </div>
+  </div>
+  <div class="modal" id="modalInstallDistro">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalInstallDistro()">❌</span>
+      <img src="img/installdistro.jpg" alt="Foto Install Distro" />
+    </div>
+  </div>
+  <div class="modal" id="modalLoginDistro">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalLoginDistro()">❌</span>
+      <img src="img/logindistro.jpg" alt="Foto Login Distro" />
+    </div>
+  </div>
+  <div class="modal" id="modalUpdateDistro">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalUpdateDistro()">❌</span>
+      <img src="img/updatedistro.jpg" alt="Foto Update Distro" />
+    </div>
+  </div>
+  <div class="modal" id="modalKeluarDistro">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalKeluarDistro()">❌</span>
+      <img src="img/exitdistro.jpg" alt="Foto Keluar Dari Distro" />
+    </div>
+  </div>
+  <script>
+    function bukaModalInstallProot() {
+      document.getElementById('modalInstallProot').classList.add('aktif');
+    }
+
+    function tutupModalInstallProot() {
+      document.getElementById('modalInstallProot').classList.remove('aktif');
+    }
+
+    function bukaModalInstallDistro() {
+      document.getElementById('modalInstallDistro').classList.add('aktif');
+    }
+
+    function tutupModalInstallDistro() {
+      document.getElementById('modalInstallDistro').classList.remove('aktif');
+    }
+
+    function bukaModalLoginDistro() {
+      document.getElementById('modalLoginDistro').classList.add('aktif');
+    }
+
+    function tutupModalLoginDistro() {
+      document.getElementById('modalLoginDistro').classList.remove('aktif');
+    }
+
+    function bukaModalUpdateDistro() {
+      document.getElementById('modalUpdateDistro').classList.add('aktif');
+    }
+
+    function tutupModalUpdateDistro() {
+      document.getElementById('modalUpdateDistro').classList.remove('aktif');
+    }
+
+    function bukaModalKeluarDistro() {
+      document.getElementById('modalKeluarDistro').classList.add('aktif');
+    }
+
+    function tutupModalKeluarDistro() {
+      document.getElementById('modalKeluarDistro').classList.remove('aktif');
+    }
+
+    //klik diluar modal = tutup
+    document.getElementById('modalInstallProot').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalInstallProot();
+    });
+
+    document.getElementById('modalInstallDistro').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalInstallDistro();
+    });
+
+    document.getElementById('modalLoginDistro').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalLoginDistro();
+    });
+
+    document.getElementById('modalUpdateDistro').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalUpdateDistro();
+    });
+
+    document.getElementById('modalKeluarDistro').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalKeluarDistro();
+    });
+  </script>
 </body>
 </html>
