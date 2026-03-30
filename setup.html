@@ -251,6 +251,64 @@
       color: #000;
     }
 
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.aktif {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #111118;
+      border: 1px solid #00ffe7;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 260px;
+      width: 70%;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-box img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .modal-box img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .modal-box p {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: #00ffe7;
+      letter-spacing: 1px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      cursor: pointer;
+      color: #555570;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #00ffe7;
+    }
+
   </style>
 </head>
 <body>
@@ -271,7 +329,7 @@
       <p class="desc">Langkah-langkah setup Termux dari nol sampai siap dipakai.</p>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step" onclick="bukaModalDownloadTermux()" style="cursor: pointer;">
         <div class="step-num">01</div>
         <div class="step-content">
           <h3>Install Termux</h3>
@@ -280,7 +338,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalSetupStorage()" style="cursor: pointer;">
         <div class="step-num">02</div>
         <div class="step-content">
           <h3>Setup Storage</h3>
@@ -289,7 +347,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalUpdate()" style="cursor: pointer;">
         <div class="step-num">03</div>
         <div class="step-content">
           <h3>Update & Upgrade</h3>
@@ -298,7 +356,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" onclick="bukaModalInstallPackage()" style="cursor: pointer;">
         <div class="step-num">04</div>
         <div class="step-content">
           <h3>Install Package Penting</h3>
@@ -312,5 +370,85 @@
       <span>Termux - Android Hacking Since Day One 🔥</span>
     </div>
   </div>
+  <div class="modal" id="modalDownloadTermux">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalDownloadTermux()">❌</span>
+      <img src="img/downloadtermux.jpg" alt="Foto Halaman Download Termux" />
+      <p> Klik link download, lalu setelah masuk ke halaman download termux, scroll kebawah dan download versi yang stabil (version 0.118.3)</p>
+    </div>
+  </div>
+  <div class="modal" id="modalSetupStorage">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalSetupStorage()">❌</span>
+      <img src="img/setupstorage.jpg" alt="Foto Setup Storage Di Termux" />
+      <p> Ketik Perintah nya, lalu tekan enter, kemudian akan ada pilihan ya stau tidak, kalian ketik saja (y) menandakan iya.</p>
+    </div>
+  </div>
+  <div class="modal" id="modalUpdate">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalUpdate()">❌</span>
+      <img src="img/update1.jpg" alt="Foto Update & Upgrade Package Termux" />
+      <img src="img/update2.jpg" alt="Foto Update & Upgrade Package Termux" />
+      <p>Ketikan perintahnya, lalu jika ada sebuah tulisan untuk meminta izin atau pilihan ketik saja (y) lalu enter</p>
+    </div>
+  </div>
+  <div class="modal" id="modalInstallPackage">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupModalInstallPackage()">❌</span>
+      <img src="img/installpackage.jpg" alt="Foto Menginstall beberapa Package Penting Di Termux." />
+      <p>pkg install = menginstal paket ➡️  git = akses github, python = pemograman bahasa python, nodejs = java script, nano dan vim = teks editor. itu semua nama nama dan arti dari pajet yang sering digunakan</p>
+    </div>
+  </div>
+  <script>
+    function bukaModalDownloadTermux() {
+      document.getElementById('modalDownloadTermux').classList.add('aktif');
+    }
+
+    function tutupModalDownloadTermux() {
+      document.getElementById('modalDownloadTermux').classList.remove('aktif');
+    }
+
+    function bukaModalSetupStorage() {
+      document.getElementById('modalSetupStorage').classList.add('aktif');
+    }
+
+    function tutupModalSetupStorage() {
+      document.getElementById('modalSetupStorage').classList.remove('aktif');
+    }
+
+    function bukaModalUpdate() {
+      document.getElementById('modalUpdate').classList.add('aktif');
+    }
+
+    function tutupModalUpdate() {
+      document.getElementById('modalUpdate').classList.remove('aktif');
+    }
+
+    function bukaModalInstallPackage() {
+      document.getElementById('modalInstallPackage').classList.add('aktif');
+    }
+
+    function tutupModalInstallPackage() {
+      document.getElementById('modalInstallPackage').classList.remove('aktif');
+    }
+
+    //klik diluar modal = tutup
+    document.getElementById('modalDownloadTermux').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalDownloadTermux();
+    });
+
+    document.getElementById('modalSetupStorage').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalSetupStorage();
+    });
+
+    document.getElementById('modalUpdate').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalUpdate();
+    });
+
+    document.getElementById('modalInstallPackage').addEventListener('click', function(e) {
+      if (e.target === this) tutupModalInstallPackage();
+    });
+
+  </script>
 </body>
 </html>
